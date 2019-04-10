@@ -1,0 +1,354 @@
+@import 'shared';
+@import 'hub-create';
+@import 'info-dialog';
+@import 'loader';
+
+$header-section-width: 350px;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
+  @extend %default-font;
+}
+
+:local(.home) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+:local(.main-content) {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+
+  &:local(.noninteractive) {
+    pointer-events: none;
+  }
+}
+
+:local(.header-content) {
+  padding: 0.5em 1.75em 0.5em 1.75em;
+  background-color: white;
+  min-height: 65px;
+  height: 65px;
+  display: flex;
+
+  @media (max-width: 768px), (max-height: 480px) {
+    height: auto;
+    min-height: auto;
+    padding: 1em 0;
+    flex-direction: column;
+  }
+
+  :local(.title-and-nav) {
+    display: flex;
+
+    @media (max-width: 1024px) {
+      flex: 1 1 $header-section-width;
+    }
+
+    @media (max-width: 768px), (max-height: 480px) {
+      justify-content: center;
+      flex: 1;
+    }
+
+    :local(.links) {
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 768px), (max-height: 480px) {
+        flex-direction: column;
+      }
+
+      a {
+        display: flex;
+        margin: 0 16px;
+        color: black;
+        font-weight: bold;
+        font-size: 1.4em;
+        text-decoration: none;
+        white-space: nowrap;
+        
+        @media (max-width: 768px), (max-height: 480px) {
+          margin-top: 0.5em;
+        }
+      }
+    }
+  }
+
+  :local(.sign-in) {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    @media (max-width: 768px), (max-height: 480px) {
+      flex: 1;
+      justify-content: center;
+      margin-top: 1em;
+    }
+
+    a {
+      text-decoration: underline;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}
+
+:local(.video-container) {
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image: none;
+}
+
+:local(.background-video) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.3;
+}
+
+:local(.hero-content) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 2em 0;
+
+  @media (max-width: 768px), (max-height: 480px) {
+    padding: 0;
+    padding-bottom: 64px;
+    order: -1;
+  }
+
+  :local(.attribution) {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    color: $dark-grey;
+    opacity: 0.8;
+    font-size: 12px;
+
+    @media (max-width: 768px), (max-height: 480px) {
+      bottom: 12px;
+      top: auto;
+    }
+
+    a {
+      font-weight: bold;
+      color: $dark-grey;
+    }
+  }
+
+  :local(.container) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+
+    @media (max-height: 480px) {
+      padding: 1em;
+      padding-bottom: 0;
+    }
+
+    :local(.logo) {
+      max-width: 250px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    :local(.title) {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+
+      @media (max-width: 768px) {
+        font-size: 1em;
+      }
+
+      @media (max-height: 480px) {
+        display: none;
+      }
+    }
+  }
+
+  :local(.create) {
+    padding: 2.1em;
+    padding-bottom: 2vw;
+    position: relative;
+
+    @media (max-width: 768px), (max-height: 480px) {
+      padding: 0.5em;
+    }
+  }
+
+  :local(.have-code) {
+    display: flex;
+    justify-content: center;
+
+    a { 
+      margin-top: 8px;
+      color: black;
+      font-weight: bold;
+    }
+  }
+
+}
+
+:local(.oculus-browser-hero) {
+  flex-direction: column;
+  flex: 450px;
+  background-image: url('../images/home-hero-background.jpg');
+  background-size: cover;
+  padding: 1.5em;
+
+  :local(.attribution) {
+    display: none;
+  }
+  :local(.container) {
+    padding: 0;
+
+    :local(.logo) {
+      align-self: flex-start;
+      margin-left: -25px;
+      margin-bottom: -12px;
+    }
+    :local(.title) {
+      display: block;
+      align-self: flex-start;
+    }
+    :local(.blurb) {
+      white-space: pre;
+      font-size: 17pt;
+      margin: 0.5em 0;
+      margin-bottom: 1em;
+      align-self: flex-start;
+    }
+  }
+  :local(.hero-panel) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  :local(.cta-buttons) {
+    display: flex;
+    :local(.primary-button) {
+      @extend %action-button;
+    }
+    :local(.secondary-button) {
+      @extend %action-button-secondary;
+    }
+    :local(.cta-button) {
+      font-size: 14pt;
+      width: 10em;
+      margin-right: 1em;
+    }
+  }
+  :local(.rightPanel) {
+    flex: 0;
+  }
+  :local(.hero-video) {
+    flex: 1;
+    display: flex;
+    :local(video) {
+      width: 100%;
+    }
+  }
+  :local(.have-code) {
+    justify-content: flex-end;
+    font-size: 14pt;
+    margin-top: -2em;
+  }
+}
+
+:local(.footer-content) {
+  padding: 2.25em;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media (max-width: 768px), (max-height: 480px) {
+    background-color: white;
+    padding: 0 0 2em 0;
+    margin: 0;
+    justify-content: center;
+  }
+
+  :local(.links) {
+    text-align: center;
+    color: black;
+    display: flex;
+    flex-direction: column;
+
+    :local(.moz-logo) {
+      width: 172px;
+      height: 49px;
+      margin-left: 18px;
+
+      @media (max-width: 768px), (max-height: 480px) {
+        width: 113px;
+        height: 32px;
+        margin: 0;
+        margin-top: 18px;
+      }
+    }
+
+    :local(.top) {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      @media (max-width: 768px), (max-height: 480px) {
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+
+    :local(.link) {
+      color: $dark-grey;
+      font-weight: bold;
+      margin: 0 18px;
+
+      @media (max-width: 768px), (max-height: 480px) {
+        margin-top: 18px;
+      }
+    }
+
+    :local(.bottom) {
+      margin-top: 8px;
+
+      a {
+        color: black;
+      }
+    }
+  }
+}
+

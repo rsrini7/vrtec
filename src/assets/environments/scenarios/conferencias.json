@@ -1,0 +1,31 @@
+{
+   "name":"Conferencias",
+   "version":"0.0.1",
+   "meta":{
+      "title":"Conferencias",
+      "license":"All rights reserved",
+      "url":"###MIURL###",
+      "authors":[
+         {
+            "name":"MIRV | Innovación Educativa",
+            "attribution":true,
+            "organization":{
+               "name":"Tec de Monterrey",
+               "url":"https://tec.mx/es"
+            }
+         }
+      ],
+      "images":[
+         {
+            "type":"preview-thumbnail",
+            "srcset":"conferencias.jpg"
+         }
+      ]
+   },
+   "assets":[
+      {
+         "name":"Conferencias",
+         "src":"conferencias.glb"
+      }
+   ]
+}

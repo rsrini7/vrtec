@@ -1,0 +1,31 @@
+{
+   "name":"Galtec",
+   "version":"0.0.1",
+   "meta":{
+      "title":"Galtec",
+      "license":"All rights reserved",
+      "url":"###MIURL###",
+      "authors":[
+         {
+            "name":"MIRV | Innovación Educativa",
+            "attribution":true,
+            "organization":{
+               "name":"Tec de Monterrey",
+               "url":"https://tec.mx/es"
+            }
+         }
+      ],
+      "images":[
+         {
+            "type":"preview-thumbnail",
+            "srcset":"galtec.jpg"
+         }
+      ]
+   },
+   "assets":[
+      {
+         "name":"Galtec",
+         "src":"galtec.glb"
+      }
+   ]
+}
